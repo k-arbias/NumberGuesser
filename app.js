@@ -20,15 +20,11 @@ guessBtn.addEventListener('click', function(){
         setMessage(`Please enter a number between ${min} and ${max}`, 'red');
     }
     if(guess === winningNum){
-        guessInput.disabled = true;
-        guessInput.style.borderColor = 'green';
-        setMessage(`${winningNum} is correct! You got it!`, 'green');
+        gameOver(true, `${winningNum} is correct! You got it!`);
     }else {
         guessesLeft -= 1;
         if(guessesLeft === 0){
-            guessInput.disabled = true;
-            guessInput.style.borderColor = 'red';
-            setMessage(`Game Over, you lost. The correct number was ${winningNum}`, 'red');
+            gameOver(false, `Game Over, you lost. The correct number was ${winningNum}`);
         }else {
             guessInput.style.borderColor = 'red';
             guessInput.value = ''; 
@@ -36,6 +32,16 @@ guessBtn.addEventListener('click', function(){
         }
     }
 });
+
+function gameOver(won, msg){
+    let color;
+    won === true ? color = 'green' : color = 'red';
+
+    guessInput.disabled = true;
+    guessInput.style.borderColor = color;
+    message.style.color = color;
+    setMessage(msg);
+}
 
 function setMessage(msg, color){
     message.style.color = color;
