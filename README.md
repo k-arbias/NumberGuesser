@@ -1,5 +1,5 @@
 # NumberGuesser
-This is a small project build using js, for style I used Skeleton css.
+This is a small project build using Js, for style I used Skeleton Css.
 Number Guesser Game functions are:
 
 1)Player must guess a number between a min and a max
